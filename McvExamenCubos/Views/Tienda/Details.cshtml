@@ -1,0 +1,57 @@
+﻿@model McvExamenCubos.Models.Cubo
+
+@{
+    ViewData["Title"] = "Details";
+    List<BlobModel> listBlobs = ViewData["Imagenes"] as List<BlobModel>;
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Cubo</h4>
+    <hr />
+
+    @foreach (BlobModel blob in listBlobs)
+    {
+        @if (Model.Imagen == blob.Nombre)
+        {
+            <dd class="col-sm-10">
+                <img src="@blob.Url" height="400" width="300" />
+            </dd>
+        }
+    }
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCubo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCubo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Imagen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+    </dl>
+    <a asp-controller="Usuarios" asp-action="RealizarPedido" asp-route-idcubo="@Model.IdCubo" class="btn btn-info" >Comprar</a>
+</div>
